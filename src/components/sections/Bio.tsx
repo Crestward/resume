@@ -58,14 +58,7 @@ export default function Bio() {
         background: 'linear-gradient(180deg, #111827 0%, #1f2937 100%)',
       }}
     >
-      {/* 3D Tech Stack Background - Hidden on mobile */}
-      <div className="absolute inset-0 z-0 hidden md:block">
-        <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
-          <ambientLight intensity={0.3} />
-          <pointLight position={[10, 10, 10]} intensity={0.5} />
-          <FloatingTechStack />
-        </Canvas>
-      </div>
+      {/* 3D Tech Stack Background - Removed for cleaner design */}
 
       <div className="max-w-6xl mx-auto px-8 grid md:grid-cols-2 gap-12 items-center relative z-10">
         {/* Left Column - 3D Avatar */}
@@ -95,15 +88,15 @@ export default function Bio() {
           </h2>
 
           <p ref={para1Ref} className="text-xl text-gray-300 leading-relaxed">
-            Data Scientist and Co-Founder at Beck-AI, specializing in building end-to-end machine learning solutions that transform operational data into actionable insights. MSc Data Science graduate with distinction from Cardiff Metropolitan University.
+            I started out writing small Python scripts to automate the boring stuff. You know, making things faster. But somewhere between debugging at 2am and pulling data from different partner APIs at Zeeh Africa, I realized something. Data isn't just numbers. It's stories no one's bothered to read yet. Those messy operational datasets everyone complained about? They became my thing. I'd reverse engineer platform requests to their servers, unify data streams that had no business talking to each other, and suddenly patterns would emerge. Real patterns that actually mattered.
           </p>
 
           <p ref={para2Ref} className="text-xl text-gray-300 leading-relaxed">
-            With expertise in Python, TensorFlow, Apache Spark, and cloud platforms (Azure & AWS), I architect AI-driven systems combining LLMs, multi-agent frameworks, and predictive analytics. My work spans time-series forecasting, pipeline automation, and scalable data engineering solutions.
+            Then came the Spark jobs. Lots of them. Azure pipelines, Prophet models, ARIMA forecasts that actually worked in production (not just in notebooks). We cut operational bottlenecks costs down because we could finally predict what was coming instead of reacting to it. Time series forecasting went from this theoretical thing to models that ran every hour, feeding dashboards that management actually used. And here's what I learned: you can't just build models. You have to speak both languages, technical and business, or you're just making expensive noise.
           </p>
 
           <p ref={para3Ref} className="text-xl text-gray-300 leading-relaxed">
-            I focus on the intersection of technical execution and business impact—designing solutions that guide real decisions, optimize resources, and deliver measurable results in production environments.
+            These days I'm co-founding Beck-AI, building AI systems that work when real users hit them. LLMs paired with multi-agent frameworks, semantic search that gets context, FastAPI backends with PostgreSQL that scale when they need to. My MSc from Cardiff came with distinction, sure. But my real degree came from production, where models either ship or they don't. I think about the business problem first, then write code. Not the other way around.
           </p>
 
           {/* Skills badges */}

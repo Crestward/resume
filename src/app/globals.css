@@ -61,9 +61,9 @@
 
   /* Custom animations */
   --animate-float: float 3s ease-in-out infinite;
-  --animate-floatWave: floatWave 4s ease-in-out infinite;
+  --animate-floatWave: floatWave 5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
   --animate-pulse-ring: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-glitch: glitch 3s infinite;
+  --animate-glitch: glitch 8s infinite;
   --animate-gradient-shift: gradient-shift 15s ease infinite;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -140,10 +140,10 @@ body {
 }
 
 @keyframes glitch {
-  0%, 90%, 100% { transform: translate(0); }
-  92% { transform: translate(-2px, 2px); }
-  94% { transform: translate(2px, -2px); }
-  96% { transform: translate(-2px, -2px); }
+  0%, 96%, 100% { transform: translate(0); opacity: 1; }
+  97% { transform: translate(-1px, 1px); opacity: 0.98; }
+  98% { transform: translate(1px, -1px); opacity: 0.98; }
+  99% { transform: translate(-1px, -1px); opacity: 0.98; }
 }
 
 @keyframes gradient-shift {
@@ -158,10 +158,10 @@ body {
 }
 
 @keyframes floatWave {
-  0%, 100% { transform: translateY(0px) translateX(0px); }
-  25% { transform: translateY(-15px) translateX(5px); }
-  50% { transform: translateY(-10px) translateX(0px); }
-  75% { transform: translateY(-15px) translateX(-5px); }
+  0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  25% { transform: translateY(-8px) translateX(3px) rotate(2deg); }
+  50% { transform: translateY(-12px) translateX(0px) rotate(0deg); }
+  75% { transform: translateY(-8px) translateX(-3px) rotate(-2deg); }
 }
 
 /* Glassmorphism utility class */
