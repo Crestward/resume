@@ -1,11 +1,9 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Resume3D from '../three/Resume3D';
+import ProfileCard from '../ui/ProfileCard';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,9 +32,11 @@ export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const socialRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
+  const profileCardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current || !titleRef.current || !socialRef.current) return;
+    if (!sectionRef.current || !titleRef.current || !socialRef.current || !footerRef.current || !profileCardRef.current) return;
 
     // Title animation
     gsap.fromTo(
@@ -50,6 +50,25 @@ export default function Contact() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 70%',
+          end: 'top 20%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    );
+
+    // Profile Card animation
+    gsap.fromTo(
+      profileCardRef.current,
+      { opacity: 0, y: 80, scale: 0.8 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: profileCardRef.current,
+          start: 'top 80%',
           end: 'top 20%',
           toggleActions: 'play none none reverse',
         },
@@ -72,6 +91,26 @@ export default function Contact() {
           trigger: socialRef.current,
           start: 'top 80%',
           end: 'top 20%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    );
+
+    // Footer animation - slide up with fade
+    const footerLines = footerRef.current.querySelectorAll('p, .footer-tech-stack');
+    gsap.fromTo(
+      footerLines,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: footerRef.current,
+          start: 'top 90%',
+          end: 'top 50%',
           toggleActions: 'play none none reverse',
         },
       }
@@ -102,47 +141,30 @@ export default function Contact() {
           className="text-6xl md:text-7xl font-bold mb-8 text-center opacity-0"
         >
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-cyan-500 to-blue-600">
-            Let's Connect
+            Let&apos;s Connect
           </span>
         </h2>
 
         <p className="text-center text-gray-400 mb-16 text-xl max-w-3xl mx-auto">
-          Interested in collaborating or learning more about my work? Let's build something amazing together.
+          Interested in collaborating or learning more about my work? Let&apos;s build something amazing together.
         </p>
 
-        {/* 3D Resume Display */}
-        <div className="w-full h-[500px] relative mb-12">
-          <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} intensity={1.5} color="#10B981" />
-            <pointLight position={[-10, -10, -10]} intensity={0.8} color="#3B82F6" />
-            <spotLight position={[0, 10, 5]} angle={0.5} intensity={1.2} color="#06B6D4" />
-
-            <Resume3D />
-
-            <OrbitControls
-              enablePan={false}
-              enableZoom={true}
-              enableRotate={true}
-              minDistance={3}
-              maxDistance={8}
-              autoRotate={true}
-              autoRotateSpeed={2}
-            />
-          </Canvas>
+        {/* Profile Card Display */}
+        <div ref={profileCardRef} className="w-full flex justify-center mb-12 opacity-0">
+          <ProfileCard
+            name="Oladimeji Adeyemi"
+            title="Data Scientist | AI Engineer | ML Specialist"
+            handle="oladimeji-adeyemi"
+            status="Available for opportunities"
+            contactText="Download Resume"
+            avatarUrl="/logo.png"
+            showUserInfo={true}
+            enableTilt={true}
+            enableMobileTilt={false}
+            onContactClick={handleDownload}
+          />
         </div>
 
-        {/* Download Button */}
-        <div className="text-center mb-16">
-          <button
-            onClick={handleDownload}
-            className="group relative px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full font-bold text-lg text-white hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-emerald-500/50"
-          >
-            <span className="relative z-10">📄 Download Resume</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </button>
-          <p className="text-sm text-gray-500 mt-3">Last updated: October 2025</p>
-        </div>
 
         {/* Social Links */}
         <div ref={socialRef} className="flex justify-center gap-6 mb-12">
@@ -152,6 +174,7 @@ export default function Contact() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={link.name}
               className="group relative"
             >
               <div
@@ -171,28 +194,50 @@ export default function Contact() {
           ))}
         </div>
 
-        {/* Contact Info */}
-        <div className="text-center mb-8">
-          <div className="glass inline-block px-8 py-4 rounded-full">
-            <a
-              href="mailto:oladimeji759@gmail.com"
-              className="text-gray-300 hover:text-emerald-400 transition-colors text-lg"
-            >
-              oladimeji759@gmail.com
-            </a>
-          </div>
-        </div>
 
         {/* Footer */}
-        <div className="text-center text-gray-500 text-sm border-t border-gray-800 pt-8 mt-12">
-          <p>© 2025 Oladimeji Adeyemi. Built with Next.js, Three.js, GSAP & Tailwind CSS</p>
-          <p className="mt-2">Data Scientist • AI Engineer • Machine Learning Specialist</p>
+        <div
+          ref={footerRef}
+          className="relative text-center text-gray-500 text-sm border-t border-gray-700/50 pt-8 mt-12 overflow-hidden"
+        >
+          {/* Animated gradient line at top */}
+          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent animate-pulse" />
+
+          <p className="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-gray-400 to-gray-300">
+            © 2025 Oladimeji Adeyemi. Crafted with passion and precision ✨
+          </p>
+
+          <div className="footer-tech-stack mt-4 flex flex-wrap justify-center items-center gap-2 text-xs">
+            <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 transition-all duration-300">
+              Next.js
+            </span>
+            <span className="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 hover:bg-cyan-500/20 transition-all duration-300">
+              Three.js
+            </span>
+            <span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 hover:bg-blue-500/20 transition-all duration-300">
+              GSAP
+            </span>
+            <span className="px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 transition-all duration-300">
+              Tailwind CSS
+            </span>
+          </div>
+
+          <p className="mt-4 text-gray-400 font-medium">
+            Data Scientist <span className="text-emerald-500">•</span> AI Engineer <span className="text-cyan-500">•</span> Machine Learning Specialist
+          </p>
+
+          {/* Decorative animated dots */}
+          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 flex gap-2">
+            <div className="w-2 h-2 rounded-full bg-emerald-500/50 animate-pulse" style={{ animationDelay: '0s' }} />
+            <div className="w-2 h-2 rounded-full bg-cyan-500/50 animate-pulse" style={{ animationDelay: '0.2s' }} />
+            <div className="w-2 h-2 rounded-full bg-blue-500/50 animate-pulse" style={{ animationDelay: '0.4s' }} />
+          </div>
         </div>
       </div>
 
-      {/* Decorative gradient orbs */}
-      <div className="absolute top-1/4 right-10 w-64 h-64 bg-emerald-600/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 left-10 w-80 h-80 bg-cyan-600/20 rounded-full blur-3xl pointer-events-none" />
+      {/* Decorative gradient orbs - dimmed on profile card hover */}
+      <div className="absolute top-1/4 right-10 w-64 h-64 bg-emerald-600/20 rounded-full blur-3xl pointer-events-none transition-opacity duration-500 hover-dim-orbs" />
+      <div className="absolute bottom-1/4 left-10 w-80 h-80 bg-cyan-600/20 rounded-full blur-3xl pointer-events-none transition-opacity duration-500 hover-dim-orbs" />
     </section>
   );
 }

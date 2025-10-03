@@ -8,9 +8,35 @@ some changes to make:
 
 read code.md and components.json
 
-in the lets connect section, use the profile card component in place of the revolving resume animation, to be more specific replace the revolving animation above the download resume link with the profile card component please
+dim the brightness of the neon when a cursor hovers over the profile card. Remove the email text as the profile card already has my email link
 
-polish up the footer, addd some animations
+use logo.png to fix the error:
+⨯ The requested resource isn't a valid image for /placeholder-avatar.png received null
+ GET /placeholder-avatar.png 404 in 336ms
+
+ then also fix error:
+ [Error: EPERM: operation not permitted, open 'C:\Users\oladi\Documents\code repository\portfolio\.next\trace'] {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'open',
+  path: 'C:\\Users\\oladi\\Documents\\code repository\\portfolio\\.next\\trace'        
+}
+ ⨯ uncaughtException: [Error: EPERM: operation not permitted, open 'C:\Users\oladi\Documents\code repository\portfolio\.next\trace'] {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'open',
+  path: 'C:\\Users\\oladi\\Documents\\code repository\\portfolio\\.next\\trace'        
+}
+ ⨯ uncaughtException:  [Error: EPERM: operation not permitted, open 'C:\Users\oladi\Documents\code repository\portfolio\.next\trace'] {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'open',
+  path: 'C:\\Users\\oladi\\Documents\\code repository\\portfolio\\.next\\trace'        
+}
+ GET / 200 in 11833ms
+
+
+then polish up the cards in the certification carousel, they look too bland
 
 
 adapt the components to suite the website

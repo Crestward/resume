@@ -3,7 +3,6 @@
 import { useRef, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import ParticleField from '../three/ParticleField';
-import MorphingMesh from '../three/MorphingMesh';
 import FloatingIcons from '../ui/FloatingIcons';
 import { animateText, glitchEffect, typewriterEffect } from '../animations/gsapHelpers';
 

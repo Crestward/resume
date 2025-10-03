@@ -90,8 +90,8 @@ export default function Certifications() {
         </div>
 
         {/* 3D Carousel */}
-        <div className="w-full h-[600px] relative">
-          <Canvas camera={{ position: [0, 0, 8], fov: 60 }}>
+        <div className="w-full h-[450px] relative">
+          <Canvas camera={{ position: [0, 0, 7], fov: 55 }}>
             <ambientLight intensity={0.5} />
             <pointLight position={[10, 10, 10]} intensity={1.5} color="#FBBF24" />
             <pointLight position={[-10, -10, -10]} intensity={0.8} color="#F97316" />
@@ -103,8 +103,8 @@ export default function Certifications() {
               enablePan={false}
               enableZoom={true}
               enableRotate={true}
-              minDistance={6}
-              maxDistance={12}
+              minDistance={5}
+              maxDistance={10}
               autoRotate={false}
             />
           </Canvas>

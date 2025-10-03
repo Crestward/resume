@@ -48,7 +48,6 @@ export default function SkillsMatrix() {
     });
 
     const cards = filteredSkills.map(skill => {
-      const category = skillCategories.find(cat => cat.name === skill.category);
       // Create skill card with gradient background
       const cardId = `skill-${skill.id}`;
 

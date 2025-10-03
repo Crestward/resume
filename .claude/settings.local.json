@@ -14,7 +14,11 @@
       "mcp__playwright__browser_evaluate",
       "mcp__playwright__browser_close",
       "mcp__playwright__browser_wait_for",
-      "Bash(timeout:*)"
+      "Bash(timeout:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx playwright install:*)",
+      "Bash(npx playwright test:*)",
+      "Bash(npx next lint:*)"
     ],
     "deny": [],
     "ask": []

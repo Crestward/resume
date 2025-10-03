@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useCallback, useMemo } from 'react';
+import Image from 'next/image';
 import './ProfileCard.css';
 
 const DEFAULT_BEHIND_GRADIENT =
@@ -45,7 +46,7 @@ interface ProfileCardProps {
 }
 
 const ProfileCardComponent = ({
-  avatarUrl = '/placeholder-avatar.png',
+  avatarUrl = '/logo.png',
   iconUrl,
   grainUrl,
   behindGradient,
@@ -208,9 +209,15 @@ const ProfileCardComponent = ({
 
     const handleClick = () => {
       if (!enableMobileTilt || location.protocol !== 'https:') return;
-      if (typeof (DeviceMotionEvent as any).requestPermission === 'function') {
-        (DeviceMotionEvent as any).requestPermission()
-          .then((state: string) => {
+
+      // Type guard for iOS DeviceMotionEvent with requestPermission
+      const DeviceMotionEventCast = DeviceMotionEvent as unknown as {
+        requestPermission?: () => Promise<'granted' | 'denied'>;
+      };
+
+      if (typeof DeviceMotionEventCast.requestPermission === 'function') {
+        DeviceMotionEventCast.requestPermission()
+          .then((state) => {
             if (state === 'granted') {
               window.addEventListener('deviceorientation', handleDeviceOrientation);
             }
@@ -268,10 +275,12 @@ const ProfileCardComponent = ({
           <div className="pc-shine" />
           <div className="pc-glare" />
           <div className="pc-content pc-avatar-content">
-            <img
+            <Image
               className="avatar"
               src={avatarUrl}
               alt={`${name || 'User'} avatar`}
+              width={400}
+              height={600}
               loading="lazy"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
@@ -282,9 +291,11 @@ const ProfileCardComponent = ({
               <div className="pc-user-info">
                 <div className="pc-user-details">
                   <div className="pc-mini-avatar">
-                    <img
+                    <Image
                       src={miniAvatarUrl || avatarUrl}
                       alt={`${name || 'User'} mini avatar`}
+                      width={48}
+                      height={48}
                       loading="lazy"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;

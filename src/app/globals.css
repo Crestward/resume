@@ -230,3 +230,15 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Dim neon orbs when hovering over profile card */
+.pc-card-wrapper:hover ~ .hover-dim-orbs,
+.pc-card-wrapper.active ~ .hover-dim-orbs {
+  opacity: 0.3 !important;
+}
+
+/* Alternative: dim orbs when profile card section is hovered */
+section:has(.pc-card-wrapper:hover) .hover-dim-orbs,
+section:has(.pc-card-wrapper.active) .hover-dim-orbs {
+  opacity: 0.3 !important;
+}
