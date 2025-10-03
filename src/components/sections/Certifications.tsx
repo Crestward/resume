@@ -90,8 +90,8 @@ export default function Certifications() {
         </div>
 
         {/* 3D Carousel */}
-        <div className="w-full h-[450px] relative">
-          <Canvas camera={{ position: [0, 0, 7], fov: 55 }}>
+        <div className="w-full h-[450px] relative pointer-events-auto">
+          <Canvas camera={{ position: [0, 0, 7], fov: 55 }} className="pointer-events-auto">
             <ambientLight intensity={0.5} />
             <pointLight position={[10, 10, 10]} intensity={1.5} color="#FBBF24" />
             <pointLight position={[-10, -10, -10]} intensity={0.8} color="#F97316" />
@@ -106,8 +106,14 @@ export default function Certifications() {
               minDistance={5}
               maxDistance={10}
               autoRotate={false}
+              makeDefault={false}
             />
           </Canvas>
+          {/* Overlay to reduce touchable area on mobile */}
+          <div className="md:hidden absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 left-0 right-0 h-20 pointer-events-auto bg-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-auto bg-transparent" />
+          </div>
         </div>
 
         {/* Selected Certificate Details */}

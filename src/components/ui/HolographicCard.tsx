@@ -38,7 +38,7 @@ export default function HolographicCard({ experience, index }: HolographicCardPr
   return (
     <div
       ref={cardRef}
-      className="relative p-8 rounded-2xl transition-all duration-300 cursor-pointer glass"
+      className="relative p-6 md:p-8 lg:p-10 rounded-2xl transition-all duration-300 cursor-pointer glass"
       style={{
         background: 'rgba(255, 255, 255, 0.03)',
         backdropFilter: 'blur(20px)',

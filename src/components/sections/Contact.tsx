@@ -32,11 +32,10 @@ export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const socialRef = useRef<HTMLDivElement>(null);
-  const footerRef = useRef<HTMLDivElement>(null);
   const profileCardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current || !titleRef.current || !socialRef.current || !footerRef.current || !profileCardRef.current) return;
+    if (!sectionRef.current || !titleRef.current || !socialRef.current || !profileCardRef.current) return;
 
     // Title animation
     gsap.fromTo(
@@ -96,25 +95,6 @@ export default function Contact() {
       }
     );
 
-    // Footer animation - slide up with fade
-    const footerLines = footerRef.current.querySelectorAll('p, .footer-tech-stack');
-    gsap.fromTo(
-      footerLines,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: footerRef.current,
-          start: 'top 90%',
-          end: 'top 50%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    );
   }, []);
 
   const handleDownload = () => {
@@ -195,44 +175,7 @@ export default function Contact() {
         </div>
 
 
-        {/* Footer */}
-        <div
-          ref={footerRef}
-          className="relative text-center text-gray-500 text-sm border-t border-gray-700/50 pt-8 mt-12 overflow-hidden"
-        >
-          {/* Animated gradient line at top */}
-          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent animate-pulse" />
-
-          <p className="text-base font-medium bg-clip-text text-transparent bg-gradient-to-r from-gray-400 to-gray-300">
-            © 2025 Oladimeji Adeyemi. Crafted with passion and precision ✨
-          </p>
-
-          <div className="footer-tech-stack mt-4 flex flex-wrap justify-center items-center gap-2 text-xs">
-            <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 transition-all duration-300">
-              Next.js
-            </span>
-            <span className="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 hover:bg-cyan-500/20 transition-all duration-300">
-              Three.js
-            </span>
-            <span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 hover:bg-blue-500/20 transition-all duration-300">
-              GSAP
-            </span>
-            <span className="px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 transition-all duration-300">
-              Tailwind CSS
-            </span>
-          </div>
-
-          <p className="mt-4 text-gray-400 font-medium">
-            Data Scientist <span className="text-emerald-500">•</span> AI Engineer <span className="text-cyan-500">•</span> Machine Learning Specialist
-          </p>
-
-          {/* Decorative animated dots */}
-          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 flex gap-2">
-            <div className="w-2 h-2 rounded-full bg-emerald-500/50 animate-pulse" style={{ animationDelay: '0s' }} />
-            <div className="w-2 h-2 rounded-full bg-cyan-500/50 animate-pulse" style={{ animationDelay: '0.2s' }} />
-            <div className="w-2 h-2 rounded-full bg-blue-500/50 animate-pulse" style={{ animationDelay: '0.4s' }} />
-          </div>
-        </div>
+        {/* Footer - Removed per user request */}
       </div>
 
       {/* Decorative gradient orbs - dimmed on profile card hover */}

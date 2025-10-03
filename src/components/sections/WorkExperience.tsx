@@ -66,14 +66,7 @@ export default function WorkExperience() {
         background: 'linear-gradient(180deg, #1f2937 0%, #111827 50%, #0f172a 100%)',
       }}
     >
-      {/* 3D Timeline Background */}
-      <div className="absolute left-0 top-0 w-1/4 h-full opacity-30">
-        <Canvas camera={{ position: [3, 0, 5], fov: 50 }}>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} intensity={1} />
-          <Timeline3D count={workExperiences.length} />
-        </Canvas>
-      </div>
+      {/* 3D Timeline Background - Removed per user request */}
 
       <div className="max-w-5xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
         {/* Section Title */}
@@ -94,9 +87,7 @@ export default function WorkExperience() {
         </div>
       </div>
 
-      {/* Decorative gradient orbs */}
-      <div className="absolute top-1/4 right-10 w-64 h-64 bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 left-10 w-80 h-80 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
+      {/* Decorative gradient orbs - removed per user request */}
     </section>
   );
 }

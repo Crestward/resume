@@ -53,7 +53,7 @@ export default function Hero() {
 
         <p
           ref={subtitleRef}
-          className="text-2xl md:text-3xl text-gray-300 mb-32 glass inline-block px-8 py-4 rounded-full opacity-0"
+          className="text-2xl md:text-3xl text-gray-300 mb-8 glass inline-block px-8 py-4 rounded-full opacity-0"
         >
           Data Scientist & AI Engineer
         </p>

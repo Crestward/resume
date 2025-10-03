@@ -25,17 +25,17 @@ export default function FloatingIcons() {
   return (
     <div
       ref={containerRef}
-      className="flex justify-center gap-4 mt-12 flex-wrap"
+      className="flex justify-center gap-4 mt-8 flex-wrap max-w-xl mx-auto"
     >
       {techIcons.map((tech, index) => (
         <div
           key={index}
-          className="tech-icon glass p-4 rounded-xl hover:scale-110 transition-all duration-300 cursor-pointer group relative opacity-0"
+          className="tech-icon glass p-3 md:p-4 rounded-xl hover:scale-110 transition-all duration-300 cursor-pointer group relative opacity-0"
           style={{
-            animation: `float 3s ease-in-out ${index * 0.2}s infinite`,
+            animation: `floatWave 4s ease-in-out ${index * 0.3}s infinite`,
           }}
         >
-          <span className="text-4xl block">{tech.emoji}</span>
+          <span className="text-3xl md:text-4xl block">{tech.emoji}</span>
 
           {/* Tooltip */}
           <div className={`absolute -bottom-10 left-1/2 transform -translate-x-1/2 px-3 py-1 rounded-full text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r ${tech.color} whitespace-nowrap`}>

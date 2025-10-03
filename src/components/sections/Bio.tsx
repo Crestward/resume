@@ -58,8 +58,8 @@ export default function Bio() {
         background: 'linear-gradient(180deg, #111827 0%, #1f2937 100%)',
       }}
     >
-      {/* 3D Tech Stack Background */}
-      <div className="absolute inset-0 z-0">
+      {/* 3D Tech Stack Background - Hidden on mobile */}
+      <div className="absolute inset-0 z-0 hidden md:block">
         <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
           <ambientLight intensity={0.3} />
           <pointLight position={[10, 10, 10]} intensity={0.5} />
