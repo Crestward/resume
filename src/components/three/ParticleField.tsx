@@ -12,8 +12,8 @@ export default function ParticleField() {
   const mousePosition = useMousePosition();
   const { scrollVelocity } = useScrollProgress();
 
-  // Particle count based on device
-  const particleCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 1000 : 5000;
+  // Particle count based on device - more particles on mobile for better visibility
+  const particleCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 2500 : 5000;
 
   // Create particle positions
   const positions = useMemo(() => {
@@ -66,14 +66,19 @@ export default function ParticleField() {
     return geom;
   }, [positions]);
 
+  // Adjust opacity and size based on device
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const particleSize = isMobile ? 0.04 : 0.02;
+  const particleOpacity = isMobile ? 0.8 : 0.6;
+
   return (
     <points ref={pointsRef} geometry={geometry}>
       <pointsMaterial
         ref={materialRef}
-        size={0.02}
+        size={particleSize}
         color="#667eea"
         transparent
-        opacity={0.6}
+        opacity={particleOpacity}
         sizeAttenuation
       />
     </points>

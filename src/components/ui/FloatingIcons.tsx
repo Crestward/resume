@@ -25,14 +25,15 @@ export default function FloatingIcons() {
   return (
     <div
       ref={containerRef}
-      className="flex justify-center gap-4 mt-8 flex-wrap max-w-xl mx-auto"
+      className="flex justify-center gap-4 flex-wrap max-w-xl mx-auto"
+      style={{ marginTop: 0 }}
     >
       {techIcons.map((tech, index) => (
         <div
           key={index}
-          className="tech-icon glass p-3 md:p-4 rounded-xl hover:scale-110 transition-all duration-300 cursor-pointer group relative opacity-0"
+          className="tech-icon glass p-3 md:p-4 rounded-xl hover:scale-110 transition-all duration-300 cursor-pointer group relative opacity-0 md:animate-floatWave"
           style={{
-            animation: `floatWave 4s ease-in-out ${index * 0.3}s infinite`,
+            animationDelay: `${index * 0.3}s`,
           }}
         >
           <span className="text-3xl md:text-4xl block">{tech.emoji}</span>

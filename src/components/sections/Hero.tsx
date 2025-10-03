@@ -41,10 +41,11 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="text-center z-10 relative px-8">
+      <div className="text-center z-10 relative px-8 flex flex-col items-center">
         <h1
           ref={titleRef}
-          className="text-7xl md:text-9xl font-bold mb-6 opacity-0"
+          className="text-6xl md:text-9xl font-bold opacity-0"
+          style={{ marginBottom: 'clamp(2rem, 5vw, 3rem)' }}
         >
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
             Oladimeji Adeyemi
@@ -53,7 +54,8 @@ export default function Hero() {
 
         <p
           ref={subtitleRef}
-          className="text-2xl md:text-3xl text-gray-300 mb-8 glass inline-block px-8 py-4 rounded-full opacity-0"
+          className="text-xl md:text-3xl text-gray-300 glass inline-block px-6 md:px-8 py-3 md:py-4 rounded-full opacity-0"
+          style={{ marginBottom: 'clamp(3rem, 8vw, 5rem)' }}
         >
           Data Scientist & AI Engineer
         </p>

@@ -134,12 +134,12 @@ const Masonry = ({
   }, [items]);
 
   const grid = useMemo(() => {
-    if (!width) return [];
+    if (!width) return { items: [], maxHeight: 0 };
 
     const colHeights = new Array(columns).fill(0);
     const columnWidth = width / columns;
 
-    return items.map(child => {
+    const gridItems = items.map(child => {
       const col = colHeights.indexOf(Math.min(...colHeights));
       const x = columnWidth * col;
       const height = child.height / 2;
@@ -149,14 +149,16 @@ const Masonry = ({
 
       return { ...child, x, y, w: columnWidth, h: height };
     });
+
+    return { items: gridItems, maxHeight: Math.max(...colHeights) };
   }, [columns, items, width]);
 
   const hasMounted = useRef(false);
 
   useLayoutEffect(() => {
-    if (!imagesReady) return;
+    if (!imagesReady || !grid.items) return;
 
-    grid.forEach((item, index) => {
+    grid.items.forEach((item, index) => {
       const selector = `[data-key="${item.id}"]`;
       const animationProps = {
         x: item.x,
@@ -245,8 +247,8 @@ const Masonry = ({
   };
 
   return (
-    <div ref={containerRef} className="list">
-      {grid.map(item => {
+    <div ref={containerRef} className="list" style={{ height: grid.maxHeight || 'auto' }}>
+      {grid.items && grid.items.map(item => {
         return (
           <div
             key={item.id}

@@ -38,33 +38,34 @@ export default function HolographicCard({ experience, index }: HolographicCardPr
   return (
     <div
       ref={cardRef}
-      className="relative p-6 md:p-8 lg:p-10 rounded-2xl transition-all duration-300 cursor-pointer glass"
+      className="relative rounded-2xl transition-all duration-300 cursor-pointer glass"
       style={{
         background: 'rgba(255, 255, 255, 0.03)',
         backdropFilter: 'blur(20px)',
         border: '1px solid rgba(255, 255, 255, 0.1)',
         boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
         transformStyle: 'preserve-3d',
+        padding: 'clamp(1.5rem, 4vw, 2.5rem)',
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={() => setIsExpanded(!isExpanded)}
     >
       {/* Company & Position */}
-      <div className="mb-4">
-        <h3 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+      <div className="mb-6">
+        <h3 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
           {experience.position}
         </h3>
-        <div className="flex items-center gap-2 mt-2">
-          <span className="text-xl text-blue-400">{experience.company}</span>
-          <span className="text-gray-500">•</span>
-          <span className="text-gray-400">{experience.location}</span>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mt-2">
+          <span className="text-lg md:text-xl text-blue-400">{experience.company}</span>
+          <span className="text-gray-500 hidden sm:inline">•</span>
+          <span className="text-gray-400 text-sm md:text-base">{experience.location}</span>
         </div>
         <p className="text-sm text-gray-500 mt-1">{experience.duration}</p>
       </div>
 
       {/* Description */}
-      <p className="text-gray-300 mb-4 leading-relaxed">{experience.description}</p>
+      <p className="text-gray-300 mb-6 leading-relaxed">{experience.description}</p>
 
       {/* Metrics */}
       {experience.metrics && (

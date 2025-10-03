@@ -56,11 +56,13 @@ export const fadeInUp = (
     elements,
     {
       opacity: 0,
-      y: 30,
+      y: 0,  // Start at normal position, not below
+      scale: 0.8,  // Start slightly smaller instead
     },
     {
       opacity: 1,
       y: 0,
+      scale: 1,
       duration: 0.8,
       stagger,
       ease: 'power2.out',

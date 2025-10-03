@@ -9,6 +9,7 @@
   will-change: transform, width, height, opacity;
   cursor: pointer;
   padding: 4px;
+  z-index: 1;
 }
 
 .item-img {

@@ -155,7 +155,7 @@ export default function SkillsMatrix() {
         </div>
 
         {/* Masonry Skills Grid */}
-        <div className="w-full min-h-[600px] relative">
+        <div className="w-full relative mb-20 md:mb-12" style={{ zIndex: 1 }}>
           <Masonry
             items={skillCards}
             ease="power3.out"
@@ -170,7 +170,7 @@ export default function SkillsMatrix() {
         </div>
 
         {/* Legend */}
-        <div className="mt-12 flex flex-wrap gap-4 justify-center">
+        <div className="mt-12 flex flex-wrap gap-4 justify-center relative" style={{ zIndex: 100 }}>
           {skillCategories.map((category) => (
             <div key={category.name} className="flex items-center gap-2">
               <div
@@ -183,7 +183,7 @@ export default function SkillsMatrix() {
         </div>
 
         {/* Instructions */}
-        <div className="mt-8 text-center text-gray-500 text-sm">
+        <div className="mt-8 text-center text-gray-500 text-sm relative" style={{ zIndex: 100 }}>
           <p>💡 Hover over cards to interact • Cards are sized by proficiency level</p>
         </div>
       </div>
