@@ -242,3 +242,22 @@ section:has(.pc-card-wrapper:hover) .hover-dim-orbs,
 section:has(.pc-card-wrapper.active) .hover-dim-orbs {
   opacity: 0.3 !important;
 }
+
+/* Section number indicators */
+.section-number-indicator {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 120px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  z-index: 0;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .section-number-indicator {
+    font-size: 60px;
+  }
+}

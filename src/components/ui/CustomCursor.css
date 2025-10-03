@@ -1,0 +1,74 @@
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(16, 185, 129, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.hovering {
+  width: 40px;
+  height: 40px;
+  border-color: rgba(96, 165, 250, 0.8);
+  background: rgba(96, 165, 250, 0.1);
+}
+
+.custom-cursor-trail {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.6) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: left 0.15s ease, top 0.15s ease;
+}
+
+.cursor-particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.8) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(-50%, -50%);
+  animation: particleFade 1s ease-out forwards;
+}
+
+@keyframes particleFade {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
+
+/* Hide default cursor on desktop */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  a, button, input, textarea, [role="button"] {
+    cursor: none;
+  }
+}
+
+/* Show default cursor on touch devices */
+@media (pointer: coarse) {
+  .custom-cursor,
+  .custom-cursor-trail,
+  .cursor-particle {
+    display: none;
+  }
+}

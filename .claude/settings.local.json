@@ -18,7 +18,8 @@
       "Bash(npx tsc:*)",
       "Bash(npx playwright install:*)",
       "Bash(npx playwright test:*)",
-      "Bash(npx next lint:*)"
+      "Bash(npx next lint:*)",
+      "Bash(taskkill:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,256 @@
+/* Mobile-first responsive adjustments */
+
+/* Mobile Layout Adjustments (9.1) */
+@media (max-width: 768px) {
+  /* Reduce font sizes */
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.75rem !important;
+  }
+
+  h3 {
+    font-size: 1.5rem !important;
+  }
+
+  /* Adjust padding and margins */
+  section {
+    padding: 3rem 1rem !important;
+  }
+
+  .container, .max-w-6xl, .max-w-7xl {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Stack grid layouts */
+  .grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Adjust 3D canvas sizes */
+  canvas {
+    max-height: 300px !important;
+  }
+
+  /* Hide complex 3D effects on mobile */
+  .mobile-optimized .background-effects canvas {
+    display: none;
+  }
+
+  .mobile-optimized .scroll-progress-3d {
+    display: none;
+  }
+
+  /* Reduce z-index layers */
+  .mobile-optimized [style*="z-index"] {
+    z-index: auto !important;
+  }
+
+  /* Simplify buttons */
+  button, .button {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.875rem !important;
+  }
+
+  /* Touch-friendly sizing */
+  a, button, [onclick], [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Optimize images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Performance Optimization for Mobile (9.2) */
+@media (max-width: 768px) {
+  /* Disable expensive animations */
+  .mobile-optimized * {
+    animation-duration: 0.3s !important;
+  }
+
+  .mobile-optimized .parallax-item {
+    transform: none !important;
+  }
+
+  /* Reduce particle effects */
+  .mobile-optimized .cursor-particle:nth-child(2n) {
+    display: none;
+  }
+
+  /* Simplify shadows */
+  .mobile-optimized * {
+    box-shadow: none !important;
+  }
+
+  .mobile-optimized button:hover,
+  .mobile-optimized .card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* Disable blur effects */
+  .mobile-optimized * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Reduce transforms */
+  .mobile-optimized .tilt-on-hover:hover {
+    transform: none !important;
+  }
+}
+
+/* Touch Gestures Visual Feedback (9.3) */
+.swipe-indicator {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(16, 185, 129, 0.9);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+.swipe-indicator.show {
+  opacity: 1;
+}
+
+/* Pinch gesture overlay */
+.pinch-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+.pinch-overlay.zooming-in {
+  opacity: 1;
+}
+
+.pinch-overlay.zooming-in::before {
+  content: '🔍+';
+}
+
+.pinch-overlay.zooming-out {
+  opacity: 1;
+}
+
+.pinch-overlay.zooming-out::before {
+  content: '🔍-';
+}
+
+/* Tablet Optimization (9.4) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Tablet-specific layouts */
+  section {
+    padding: 4rem 2rem !important;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Adjust 3D canvas for tablets */
+  canvas {
+    max-height: 400px !important;
+  }
+
+  /* Optimize font sizes for tablets */
+  h1 {
+    font-size: 2.5rem !important;
+  }
+
+  h2 {
+    font-size: 2rem !important;
+  }
+
+  h3 {
+    font-size: 1.75rem !important;
+  }
+
+  /* Touch-friendly but not too large */
+  a, button, [onclick], [role="button"] {
+    min-height: 40px;
+    min-width: 40px;
+  }
+
+  /* Maintain some 3D effects on tablets */
+  .scroll-progress-3d {
+    display: block;
+  }
+
+  /* Tablet-friendly cards */
+  .card, .project-card {
+    max-width: 100%;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+  section {
+    min-height: auto !important;
+    padding: 2rem 1rem !important;
+  }
+
+  canvas {
+    max-height: 250px !important;
+  }
+
+  .loading-3d {
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Optimize for retina displays */
+  .mobile-optimized img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  /* Fix viewport height on iOS */
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+
+  /* Prevent zoom on double tap */
+  * {
+    touch-action: manipulation;
+  }
+}
+
+/* Android Chrome specific fixes */
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+  /* Smooth scrolling for Android */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}

@@ -1,0 +1,185 @@
+/* Button hover 3D depth effects */
+button, .button, a[role="button"], [class*="button"] {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+button:hover, .button:hover, a[role="button"]:hover, [class*="button"]:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow:
+    0 10px 25px -5px rgba(16, 185, 129, 0.3),
+    0 20px 40px -10px rgba(16, 185, 129, 0.2);
+}
+
+button:active, .button:active, a[role="button"]:active, [class*="button"]:active {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow:
+    0 5px 15px -3px rgba(16, 185, 129, 0.2),
+    0 10px 20px -5px rgba(16, 185, 129, 0.1);
+}
+
+/* Magnetic button effect */
+.magnetic-btn {
+  position: relative;
+  transition: transform 0.2s ease-out;
+}
+
+/* Links hover effect */
+a:not([role="button"]):hover {
+  transform: translateX(4px);
+  transition: transform 0.2s ease-out;
+}
+
+/* Card hover 3D lift */
+.card, [class*="card-"], .project-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.card:hover, [class*="card-"]:hover, .project-card:hover {
+  transform: translateY(-8px) rotateX(2deg);
+  box-shadow:
+    0 20px 50px -12px rgba(16, 185, 129, 0.25),
+    0 30px 60px -15px rgba(59, 130, 246, 0.15);
+}
+
+/* Input focus glow */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(16, 185, 129, 0.1),
+    0 0 20px rgba(16, 185, 129, 0.2);
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+/* Icon hover pulse */
+svg:hover, i:hover, .icon:hover {
+  animation: icon-pulse 0.6s ease-in-out;
+}
+
+@keyframes icon-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* Badge hover bounce */
+.badge, .tech-badge, [class*="badge"] {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.badge:hover, .tech-badge:hover, [class*="badge"]:hover {
+  transform: translateY(-3px) rotate(-2deg);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+}
+
+/* Image zoom on hover */
+img:hover {
+  transform: scale(1.05);
+  transition: transform 0.4s ease-out;
+}
+
+/* Smooth scale for all interactive elements */
+[onclick]:hover, [role="button"]:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-out;
+}
+
+/* Ripple effect on click */
+@keyframes ripple {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ripple-effect:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Glow effect on focus */
+.glow-on-focus:focus {
+  box-shadow:
+    0 0 5px rgba(16, 185, 129, 0.5),
+    0 0 10px rgba(16, 185, 129, 0.4),
+    0 0 15px rgba(16, 185, 129, 0.3),
+    0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+/* Tilt effect on hover */
+.tilt-on-hover {
+  transition: transform 0.3s ease-out;
+}
+
+.tilt-on-hover:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Mobile: reduce 3D effects for performance */
+@media (max-width: 768px) {
+  button:hover, .button:hover, a[role="button"]:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  .card:hover, [class*="card-"]:hover {
+    transform: translateY(-4px);
+  }
+
+  .tilt-on-hover:hover {
+    transform: none;
+  }
+}
+
+/* Accessibility: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import CustomCursor from "@/components/ui/CustomCursor";
+import ScrollProgress from "@/components/ui/ScrollProgress";
+import BackgroundEffects from "@/components/ui/BackgroundEffects";
+import SectionTransitions from "@/components/ui/SectionTransitions";
+import MicroInteractions from "@/components/ui/MicroInteractions";
+import EasterEggs from "@/components/ui/EasterEggs";
+import LoadingScreen from "@/components/ui/LoadingScreen";
+import MobileOptimizations from "@/components/ui/MobileOptimizations";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +39,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <LoadingScreen />
+        <BackgroundEffects />
+        <CustomCursor />
+        <ScrollProgress />
+        <SectionTransitions />
+        <MicroInteractions />
+        <EasterEggs />
+        <MobileOptimizations />
         {children}
       </body>
     </html>
