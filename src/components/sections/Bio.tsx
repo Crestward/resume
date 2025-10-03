@@ -5,7 +5,6 @@ import { Canvas } from '@react-three/fiber';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Avatar3D from '../three/Avatar3D';
-import FloatingTechStack from '../three/FloatingTechStack';
 import { splitTextAnimation } from '../animations/gsapHelpers';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -88,15 +87,15 @@ export default function Bio() {
           </h2>
 
           <p ref={para1Ref} className="text-xl text-gray-300 leading-relaxed">
-            I started out writing small Python scripts to automate the boring stuff. You know, making things faster. But somewhere between debugging at 2am and pulling data from different partner APIs at Zeeh Africa, I realized something. Data isn't just numbers. It's stories no one's bothered to read yet. Those messy operational datasets everyone complained about? They became my thing. I'd reverse engineer platform requests to their servers, unify data streams that had no business talking to each other, and suddenly patterns would emerge. Real patterns that actually mattered.
+            I started out writing small Python scripts to automate the boring stuff. You know, making things faster. But somewhere between debugging at 2am and pulling data from different partner APIs at Zeeh Africa, I realized something. Data isn&apos;t just numbers. It&apos;s stories no one&apos;s bothered to read yet. Those messy operational datasets everyone complained about? They became my thing. I&apos;d reverse engineer platform requests to their servers, unify data streams that had no business talking to each other, and suddenly patterns would emerge. Real patterns that actually mattered.
           </p>
 
           <p ref={para2Ref} className="text-xl text-gray-300 leading-relaxed">
-            Then came the Spark jobs. Lots of them. Azure pipelines, Prophet models, ARIMA forecasts that actually worked in production (not just in notebooks). We cut operational bottlenecks costs down because we could finally predict what was coming instead of reacting to it. Time series forecasting went from this theoretical thing to models that ran every hour, feeding dashboards that management actually used. And here's what I learned: you can't just build models. You have to speak both languages, technical and business, or you're just making expensive noise.
+            Then came the Spark jobs. Lots of them. Azure pipelines, Prophet models, ARIMA forecasts that actually worked in production (not just in notebooks). We cut operational bottlenecks costs down because we could finally predict what was coming instead of reacting to it. Time series forecasting went from this theoretical thing to models that ran every hour, feeding dashboards that management actually used. And here&apos;s what I learned: you can&apos;t just build models. You have to speak both languages, technical and business, or you&apos;re just making expensive noise.
           </p>
 
           <p ref={para3Ref} className="text-xl text-gray-300 leading-relaxed">
-            These days I'm co-founding Beck-AI, building AI systems that work when real users hit them. LLMs paired with multi-agent frameworks, semantic search that gets context, FastAPI backends with PostgreSQL that scale when they need to. My MSc from Cardiff came with distinction, sure. But my real degree came from production, where models either ship or they don't. I think about the business problem first, then write code. Not the other way around.
+            These days I&apos;m co-founding Beck-AI, building AI systems that work when real users hit them. LLMs paired with multi-agent frameworks, semantic search that gets context, FastAPI backends with PostgreSQL that scale when they need to. My MSc from Cardiff came with distinction, sure. But my real degree came from production, where models either ship or they don&apos;t. I think about the business problem first, then write code. Not the other way around.
           </p>
 
           {/* Skills badges */}

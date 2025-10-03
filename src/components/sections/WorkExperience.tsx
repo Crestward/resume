@@ -1,12 +1,10 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { workExperiences } from '@/types/experience';
 import HolographicCard from '../ui/HolographicCard';
-import Timeline3D from '../three/Timeline3D';
 
 gsap.registerPlugin(ScrollTrigger);
 
